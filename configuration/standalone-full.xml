@@ -261,7 +261,7 @@
                 </properties-realm>
             </security-realms>
             <mappers>
-                <simple-permission-mapper name="default-permission-mapper" mapping-mode="first">
+                <simple-permission-mapper name="default-permission-mapper">
                     <permission-mapping>
                         <principal name="anonymous"/>
                         <permission class-name="org.wildfly.extension.batch.jberet.deployment.BatchPermission" module="org.wildfly.extension.batch.jberet" target-name="*"/>
@@ -555,4 +555,9 @@
             <remote-destination host="localhost" port="25"/>
         </outbound-socket-binding>
     </socket-binding-group>
+    <deployments>
+        <deployment name="SimpleWebapp.war" runtime-name="SimpleWebapp.war">
+            <content sha1="10110ffdcb82f15c518a0f82349733add585988a"/>
+        </deployment>
+    </deployments>
 </server>
