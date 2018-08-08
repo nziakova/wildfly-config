@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
 
-<server xmlns="urn:jboss:domain:5.0">
+<server xmlns="urn:jboss:domain:8.0">
     <extensions>
         <extension module="org.jboss.as.logging"/>
         <extension module="org.wildfly.extension.io"/>
@@ -62,7 +62,7 @@
         </access-control>
     </management>
     <profile>
-        <subsystem xmlns="urn:jboss:domain:logging:4.0">
+        <subsystem xmlns="urn:jboss:domain:logging:5.0">
             <console-handler name="CONSOLE">
                 <level name="INFO"/>
                 <formatter>
@@ -93,18 +93,18 @@
                     <handler name="FILE"/>
                 </handlers>
             </root-logger>
-            <formatter name="PATTERN">
-                <pattern-formatter pattern="%d{yyyy-MM-dd HH:mm:ss,SSS} %-5p [%c] (%t) %s%e%n"/>
-            </formatter>
             <formatter name="COLOR-PATTERN">
                 <pattern-formatter pattern="%K{level}%d{HH:mm:ss,SSS} %-5p [%c] (%t) %s%e%n"/>
             </formatter>
+            <formatter name="PATTERN">
+                <pattern-formatter pattern="%d{yyyy-MM-dd HH:mm:ss,SSS} %-5p [%c] (%t) %s%e%n"/>
+            </formatter>
         </subsystem>
-        <subsystem xmlns="urn:jboss:domain:io:2.0">
+        <subsystem xmlns="urn:jboss:domain:io:3.0">
             <worker name="default"/>
             <buffer-pool name="default"/>
         </subsystem>
-        <subsystem xmlns="urn:jboss:domain:undertow:4.0">
+        <subsystem xmlns="urn:jboss:domain:undertow:7.0" default-server="default-server" default-virtual-host="default-host" default-servlet-container="default">
             <buffer-cache name="default"/>
             <server name="default-server">
                 <http-listener name="default" socket-binding="http" redirect-socket="https" enable-http2="true"/>
@@ -120,11 +120,11 @@
         </subsystem>
     </profile>
     <interfaces>
-        <interface name="management">
-            <inet-address value="${jboss.bind.address.management:127.0.0.1}"/>
-        </interface>
         <interface name="public">
             <inet-address value="${jboss.bind.address:127.0.0.1}"/>
+        </interface>
+        <interface name="management">
+            <inet-address value="${jboss.bind.address.management:127.0.0.1}"/>
         </interface>
         <interface name="private">
             <inet-address value="${jboss.bind.address.private:127.0.0.1}"/>
