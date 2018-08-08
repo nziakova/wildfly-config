@@ -103,6 +103,12 @@
             <formatter name="PATTERN">
                 <pattern-formatter pattern="%d{yyyy-MM-dd HH:mm:ss,SSS} %-5p [%c] (%t) %s%e%n"/>
             </formatter>
+            <formatter name="json">
+                <json-formatter/>
+            </formatter>
+            <formatter name="xml">
+                <xml-formatter/>
+            </formatter>
         </subsystem>
         <subsystem xmlns="urn:jboss:domain:core-management:1.0"/>
         <subsystem xmlns="urn:jboss:domain:discovery:1.0"/>
